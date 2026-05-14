@@ -1,0 +1,46 @@
+.traffic__inner {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: red;
+  margin: 20px auto;
+  border: 3px solid #333;
+  transition: background-color 0.3s;
+}
+
+#toggle:checked+.circle {
+  background-color: green;
+}
+
+.custom-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #eee;
+  border: 1px solid #333;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+
+  font-family: inherit;
+}
+
+.custom-button:active {
+  background-color: #ddd;
+}
+
+.traffic {
+  text-align: center;
+  margin-top: 50px;
+  font-family: sans-serif;
+
+  input {
+    display: none;
+  }
+}
