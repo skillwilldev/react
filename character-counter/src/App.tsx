@@ -34,6 +34,7 @@ function App() {
         სიმბოლოების რაოდენობა: {characterCount}
       </p>
 
+
       {isOverLimit && (
         <span style={styles.warningText}>⚠️ სიმბოლოების რაოდენობა აჭარბებს ლიმიტს (20)!</span>
       )}
