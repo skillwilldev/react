@@ -1,0 +1,169 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #f4f6f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.app-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.main-content {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+/* ფორმის სტილები */
+.form-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  flex: 1;
+  min-width: 300px;
+  text-align: left;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.avatar-presets {
+  margin-top: 10px;
+}
+
+.avatar-presets p {
+  margin: 5px 0;
+  font-size: 12px;
+  color: #666;
+}
+
+.avatar-presets button {
+  margin-right: 5px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.avatar-presets button:hover {
+  background: #e2e2e2;
+}
+
+.toggle-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #ccc;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.toggle-btn.active {
+  background-color: #222;
+}
+
+/* ბარათის სტილები */
+.card-container {
+  flex: 1;
+  min-width: 300px;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* თემები */
+.light-theme {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+.dark-theme {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.dark-theme .profile-role {
+  color: #aaa;
+}
+
+/* ბარათის შიდა ელემენტები */
+.profile-img {
+  min-width: 158px;
+  min-height: 158px;
+  max-height: 158px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #4a90e2;
+  margin-bottom: 15px;
+  background-color: #d2d2d263;
+}
+
+.profile-name {
+  margin: 10px 0 5px 0;
+  font-size: 22px;
+}
+
+.profile-role {
+  color: #666;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.dark-theme .card-footer {
+  border-top: 1px solid #333;
+}
+
+.card-footer span {
+  font-size: 14px;
+  font-weight: 600;
+  color: #4a90e2;
+  cursor: pointer;
+}
