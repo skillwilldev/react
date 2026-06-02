@@ -1,6 +1,41 @@
 import { useState, useEffect } from "react";
 import './App.css';
 
+
+function CreditCardComponent({ card, index, deleteCard }) {
+  const [done, setDone] = useState(false);
+
+  const handleToggle = () => {
+    setDone((prev) => !prev)
+  }
+
+  return (
+    <div className={`credit-card ${card.type}`}>
+      {!done ? (
+        <>
+          <div className="card-top">
+            <span className="brand">{card.type.toUpperCase()}</span>
+            <button className="delete-btn" onClick={() => deleteCard(index)}>წაშლა</button>
+          </div>
+          <div className="card-num">{card.number}</div>
+          <div className="card-info">
+            <div>
+              <div className="info-label">მფლობელი</div>
+              {/* ბაგი 7: დაემატა თავად მფლობელის სახელი (card.holder) */}
+              <div className="info-value">{card.holder}</div>
+            </div>
+            <div>
+              <div className="info-label">ვადა</div>
+              <div className="info-value">{card.expiry}</div>
+            </div>
+          </div>
+        </>
+      ) : <span>Done!</span>}
+      <button onClick={handleToggle}>click Me</button>
+    </div>
+  )
+}
+
 export default function App() {
   // ბაგი 1 და 2: დაემატა const და გასწორდა LocalStorage-ის ქი (react_wallet)
   const [wallet, setWallet] = useState(() => {
@@ -15,6 +50,8 @@ export default function App() {
     number: '',
     expiry: ''
   });
+
+
 
   // ბაგი 2: გასწორდა ქი, რათა ემთხვეოდეს ზედა ფუნქციას (react_wallet)
   useEffect(() => {
@@ -120,24 +157,7 @@ export default function App() {
         <h2>ჩემი საფულე ({wallet.length})</h2>
         <div className="cards-grid">
           {wallet.map((card, index) => (
-            <div key={index} className={`credit-card ${card.type}`}>
-              <div className="card-top">
-                <span className="brand">{card.type.toUpperCase()}</span>
-                <button className="delete-btn" onClick={() => deleteCard(index)}>წაშლა</button>
-              </div>
-              <div className="card-num">{card.number}</div>
-              <div className="card-info">
-                <div>
-                  <div className="info-label">მფლობელი</div>
-                  {/* ბაგი 7: დაემატა თავად მფლობელის სახელი (card.holder) */}
-                  <div className="info-value">{card.holder}</div>
-                </div>
-                <div>
-                  <div className="info-label">ვადა</div>
-                  <div className="info-value">{card.expiry}</div>
-                </div>
-              </div>
-            </div>
+            <CreditCardComponent key={index} index={index} card={card} deleteCard={deleteCard} />
           ))}
         </div>
       </div>
