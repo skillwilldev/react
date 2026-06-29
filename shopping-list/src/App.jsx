@@ -86,6 +86,7 @@ function App() {
               checked={item.completed}
               className='item-checkbox' />
             <span
+            
               // onClick={() => handleToggleComplete(item.id)}
               className={`item-text ${item.completed ? 'completed' : ''}`}
             >
