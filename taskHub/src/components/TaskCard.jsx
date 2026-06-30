@@ -9,6 +9,8 @@ const NEXT_BUTTON_LABEL = {
     in_progress: "→ Done",
 };
 
+
+
 function TaskCard({ task, onMove, onDelete }) {
     const isDone = task.status === "done";
 
