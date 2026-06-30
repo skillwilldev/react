@@ -1,0 +1,84 @@
+.app {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px;
+  font-family: sans-serif;
+}
+
+.task-form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.task-form input {
+  flex: 1;
+  padding: 8px;
+}
+
+.task-board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.task-column {
+  background: #f4f4f4;
+  border-radius: 8px;
+  padding: 12px;
+  min-height: 200px;
+}
+
+.task-column__title {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.task-column__count {
+  color: #888;
+  font-weight: normal;
+}
+
+.task-column__empty {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.task-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.task-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.task-card__title {
+  font-size: 14px;
+  margin: 0;
+}
+
+.task-card__priority {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.task-card__actions {
+  display: flex;
+  gap: 6px;
+}
+
+.task-card__actions button {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+.task-card__delete {
+  color: #a32d2d;
+}
