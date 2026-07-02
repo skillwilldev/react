@@ -1,15 +1,15 @@
-##Шаг 1: Создаем (Нужен только createContext)
+## Шаг 1: Создаем (Нужен только createContext)
 #Мы просто создаем пустую «розетку» для данных пользователя и называем её UserContext.
 
 JavaScript
 import { createContext } from 'react';
 
-#Шаг 1: Просто создали контекст. Больше этот файл ничего не делает.
-#export const UserContext = createContext(null);
-#Шаг 2: Подготавливаем App для передачи (Нужен .Provider)
-#В компоненте App мы создаем реальные данные (например, стейт с объектом пользователя) и «подключаем» их к нашей розетке через .Provider в проп value.
+# Шаг 1: Просто создали контекст. Больше этот файл ничего не делает.
+# export const UserContext = createContext(null);
+# Шаг 2: Подготавливаем App для передачи (Нужен .Provider)
+# В компоненте App мы создаем реальные данные (например, стейт с объектом пользователя) и «подключаем» их к нашей розетке через .Provider в проп value.
 
-
+```js
 import { useState } from 'react';
 import { UserContext } from './UserContext'; // Импортируем нашу розетку
 import Dashboard from './Dashboard';       // Промежуточный компонент
@@ -30,8 +30,10 @@ export default function App() {
     </UserContext.Provider>
   );
 }
+```
 
-#Промежуточный компонент-посредник. Ему данные юзера не нужны.
+# Промежуточный компонент-посредник. Ему данные юзера не нужны.
+```js
 function Dashboard() {
   return (
     <div style={{ margin: '20px', padding: '20px', border: '1px solid gray' }}>
@@ -41,10 +43,12 @@ function Dashboard() {
     </div>
   );
 }
-##Шаг 3: Получаем в конечном компоненте (Нужен useContext)
-#Вот тут, в самом глубоком компоненте ProfileCard, нам наконец-то понадобились имя и роль пользователя. Мы используем хук useContext, чтобы «подключиться» к розетке UserContext, которую #мы активировали в App.
+```
+## Шаг 3: Получаем в конечном компоненте (Нужен useContext)
+# Вот тут, в самом глубоком компоненте ProfileCard, нам наконец-то понадобились имя и роль пользователя. Мы используем хук useContext, чтобы «подключиться» к розетке UserContext, которую # мы активировали в App.
 
-##JavaScript
+## JavaScript
+```js
 import { useContext } from 'react';
 import { UserContext } from './UserContext'; // Импортируем ту же самую розетку
 
@@ -60,33 +64,34 @@ function ProfileCard() {
     </div>
   );
 }
-#Конечная схема в твоей голове:
-#createContext — создал абстрактный канал связи UserContext.
-#App — взял этот UserContext, превратил его в <UserContext.Provider>, положил туда живой объект { name: "Алексей", role: "Админ" } и накрыл этим куполом всё приложение.
-#Dashboard — просто отрендерился, пропустив данные сквозь себя (ему всё равно).
-#ProfileCard — сказал: useContext(UserContext), залез под купол и забрал объект с Алексеем напрямую. Схема замкнулась!
+```
+# Конечная схема в твоей голове:
+# createContext — создал абстрактный канал связи UserContext.
+# App — взял этот UserContext, превратил его в <UserContext.Provider>, положил туда живой объект { name: "Алексей", role: "Админ" } и накрыл этим куполом всё приложение.
+# Dashboard — просто отрендерился, пропустив данные сквозь себя (ему всё равно).
+# ProfileCard — сказал: useContext(UserContext), залез под купол и забрал объект с Алексеем напрямую. Схема замкнулась!
 
 
-/////////////////////////////////////////////////////////////////
-##1. Создаем изолированный Провайдер (UserContext.jsx)
-#Мы убираем стейт из App и переносим его сюда. И используем children.
+# /////////////////////////////////////////////////////////////////
 
+## 1. Создаем изолированный Провайдер (UserContext.jsx)
+# Мы убираем стейт из App и переносим его сюда. И используем children.
 
+```js
 import { createContext, useState } from 'react';
-
 export const UserContext = createContext(null);
-
 export function UserProvider({ children }) {
   const [user, setUser] = useState({ name: "Алексей", role: "Админ" });
-
   return (
     <UserContext.Provider value={user}>
       {children} {/* Сюда встанет Dashboard */}
     </UserContext.Provider>
   );
 }
-##2. В App мы просто красиво их соединяем
+```
+## 2. В App мы просто красиво их соединяем
 
+```js
 import { UserProvider } from './UserContext';
 import Dashboard from './Dashboard';
 
@@ -97,9 +102,12 @@ export default function App() {
     </UserProvider>
   );
 }
-##3. Dashboard и ProfileCard остаются почти такими же
+```
+## 3. Dashboard и ProfileCard остаются почти такими же
 
-#Dashboard (Посредник)
+# Dashboard (Посредник)
+
+```js
 function Dashboard() {
   console.log("Dashboard рендерится?"); // Теперь этот лог сработает ТОЛЬКО 1 РАЗ при старте!
   return (
@@ -109,8 +117,10 @@ function Dashboard() {
     </div>
   );
 }
+```
+# ProfileCard (Получатель)
 
-#ProfileCard (Получатель)
+```js
 import { useContext } from 'react';
 import { UserContext } from './UserContext';
 
@@ -118,11 +128,11 @@ function ProfileCard() {
   const user = useContext(UserContext); // Забирает напрямую
   return <h3>Привет, {user.name}!</h3>;
 }
-
-#Что изменилось в работе?
-#Теперь, когда стейт внутри UserProvider изменится:
-#UserProvider перерисовывается.
-#Он видит, что Dashboard пришел к нему снаружи как готовый проп children. React знает: «Если children создан не мной внутри, значит его пропсы не менялись, я его пропускаю».
-#Dashboard НЕ рендерится.
-#А ProfileCard все равно рендерится, потому что хук useContext внутри него напрямую связан с Провайдером.
-#Вот теперь схема идеальна: данные передаются без пропсов, а промежуточный Dashboard защищен от лишней работы!
+```
+# Что изменилось в работе?
+# Теперь, когда стейт внутри UserProvider изменится:
+# UserProvider перерисовывается.
+# Он видит, что Dashboard пришел к нему снаружи как готовый проп children. React знает: «Если children создан не мной внутри, значит его пропсы не менялись, я его пропускаю».
+# Dashboard НЕ рендерится.
+# А ProfileCard все равно рендерится, потому что хук useContext внутри него напрямую связан с Провайдером.
+# Вот теперь схема идеальна: данные передаются без пропсов, а промежуточный Dashboard защищен от лишней работы!
