@@ -1,13 +1,13 @@
-# Шаг 1: Создаем (Нужен только createContext)
+ Шаг 1: Создаем (Нужен только createContext)
  Мы просто создаем пустую «розетку» для данных пользователя и называем её UserContext.
 
 JavaScript
 import { createContext } from 'react';
 
-# Шаг 1: Просто создали контекст. Больше этот файл ничего не делает.
-# export const UserContext = createContext(null);
-# Шаг 2: Подготавливаем App для передачи (Нужен .Provider)
-# В компоненте App мы создаем реальные данные (например, стейт с объектом пользователя) и «подключаем» их к нашей розетке через .Provider в проп value.
+ Шаг 1: Просто создали контекст. Больше этот файл ничего не делает.
+ export const UserContext = createContext(null);
+ Шаг 2: Подготавливаем App для передачи (Нужен .Provider)
+ В компоненте App мы создаем реальные данные (например, стейт с объектом пользователя) и «подключаем» их к нашей розетке через .Provider в проп value.
 
 ```js
 import { useState } from 'react';
@@ -32,7 +32,7 @@ export default function App() {
 }
 ```
 
-# Промежуточный компонент-посредник. Ему данные юзера не нужны.
+ Промежуточный компонент-посредник. Ему данные юзера не нужны.
 ```js
 function Dashboard() {
   return (
@@ -44,7 +44,7 @@ function Dashboard() {
   );
 }
 ```
-# Шаг 3: Получаем в конечном компоненте (Нужен useContext)
+ Шаг 3: Получаем в конечном компоненте (Нужен useContext)
  Вот тут, в самом глубоком компоненте ProfileCard, нам наконец-то понадобились имя и роль пользователя. Мы используем хук useContext, чтобы «подключиться» к розетке UserContext, которую  мы активировали в App.
 
  JavaScript
@@ -57,7 +57,7 @@ function ProfileCard() {
   const user = useContext(UserContext);
 
   return (
-    <div style={{ padding: '15px', backgroundColor: '#e0f7fa', color: '#000' }}>
+    <div style={{ padding: '15px', backgroundColor: 'e0f7fa', color: '000' }}>
       <h3>Карточка профиля (Получатель)</h3>
       <p>Имя пользователя: <b>{user.name}</b></p>
       <p>Роль на сайте: <b>{user.role}</b></p>
@@ -74,7 +74,7 @@ function ProfileCard() {
 
  /////////////////////////////////////////////////////////////////
 
-# 1. Создаем изолированный Провайдер (UserContext.jsx)
+ 1. Создаем изолированный Провайдер (UserContext.jsx)
  Мы убираем стейт из App и переносим его сюда. И используем children.
 
 ```js
@@ -89,7 +89,7 @@ export function UserProvider({ children }) {
   );
 }
 ```
-# 2. В App мы просто красиво их соединяем
+ 2. В App мы просто красиво их соединяем
 
 ```js
 import { UserProvider } from './UserContext';
@@ -103,9 +103,9 @@ export default function App() {
   );
 }
 ```
-# 3. Dashboard и ProfileCard остаются почти такими же
+ 3. Dashboard и ProfileCard остаются почти такими же
 
-# Dashboard (Посредник)
+ Dashboard (Посредник)
 
 ```js
 function Dashboard() {
@@ -118,7 +118,7 @@ function Dashboard() {
   );
 }
 ```
-# ProfileCard (Получатель)
+ ProfileCard (Получатель)
 
 ```js
 import { useContext } from 'react';
