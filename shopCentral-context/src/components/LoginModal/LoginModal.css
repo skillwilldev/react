@@ -1,0 +1,109 @@
+.login-backdrop {
+  position: fixed;
+  inset: 0;
+  background: hsl(var(--shadow-color) / 0.45);
+  backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 100;
+  animation: fade-in 0.15s ease;
+}
+
+.login-modal {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px 28px;
+  box-shadow: var(--shadow-lg);
+  animation: pop-in 0.18s ease;
+}
+
+.login-modal h2 {
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.login-modal__hint {
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0 0 20px;
+  line-height: 1.4;
+}
+
+.login-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid var(--border-strong);
+  background: var(--bg);
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.login-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-modal label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.login-modal input {
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.login-modal__submit {
+  margin-top: 6px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: filter 0.15s ease;
+}
+
+.login-modal__submit:hover {
+  filter: brightness(1.05);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

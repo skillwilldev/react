@@ -1,0 +1,58 @@
+export const products = [
+  {
+    id: "p1",
+    name: "თასმიანი ქუდი",
+    category: "აქსესუარები",
+    price: 45,
+    emoji: "🧢",
+  },
+  {
+    id: "p2",
+    name: "დენიმის ჟაკეტი",
+    category: "ტანსაცმელი",
+    price: 129,
+    emoji: "🧥",
+  },
+  {
+    id: "p3",
+    name: "სპორტული ფეხსაცმელი",
+    category: "ფეხსაცმელი",
+    price: 189,
+    emoji: "👟",
+  },
+  {
+    id: "p4",
+    name: "ტყავის ჩანთა",
+    category: "აქსესუარები",
+    price: 149,
+    emoji: "👜",
+  },
+  {
+    id: "p5",
+    name: "მზის სათვალე",
+    category: "აქსესუარები",
+    price: 39,
+    emoji: "🕶️",
+  },
+  {
+    id: "p6",
+    name: "შალის სვიტერი",
+    category: "ტანსაცმელი",
+    price: 79,
+    emoji: "🧶",
+  },
+  {
+    id: "p7",
+    name: "სამაჯური საათი",
+    category: "აქსესუარები",
+    price: 219,
+    emoji: "⌚",
+  },
+  {
+    id: "p8",
+    name: "სარბენი ფეხსაცმელი",
+    category: "ფეხსაცმელი",
+    price: 159,
+    emoji: "👞",
+  },
+];
