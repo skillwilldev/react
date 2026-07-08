@@ -20,7 +20,7 @@ function UserItem({ user, deleteUser, updateUser }) {
                     <input
                         type="text"
                         value={name}
-                        onChange={(e) => setAge(e.target.value)} />
+                        onChange={(e) => setName(e.target.value)} />
 
                     <input type="text"
                         value={age}
@@ -32,9 +32,8 @@ function UserItem({ user, deleteUser, updateUser }) {
                 </>
             ) : (
                 <>
-
                     <h3>{user.name}</h3>
-                    <p>ასაკი: {user.name}</p>
+                    <p>ასაკი: {user.age}</p>
                     <button onClick={() => setEditing(true)}>რედაქტირება</button>
                     <button onClick={() => deleteUser(user.id)}>წაშლა</button>
                 </>

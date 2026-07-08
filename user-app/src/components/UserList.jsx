@@ -7,14 +7,14 @@ function UserList({ users, deleteUser, updateUser }) {
 
     return (
         <div>
-            {users.map((user) => {
+            {users.map((user) => (
                 <UserItem
                     key={user.id}
                     user={user}
                     deleteUser={deleteUser}
                     updateUser={updateUser}
                 />
-            })}
+            ))}
         </div>
     )
 }
