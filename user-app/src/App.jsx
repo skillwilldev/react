@@ -10,6 +10,11 @@ function getFromStore() {
 
 function App() {
   const [users, setUsers] = useState(() => getFromStore());
+  const [search, setSearch] = useState('');
+
+  const filtredUsers = users.filter((item) => {
+    return item.name.toLowerCase().includes(search.toLowerCase());
+  })
 
   useEffect(() => {
     localStorage.setItem('user-app', JSON.stringify(users));
@@ -37,9 +42,12 @@ function App() {
   return (
     <div className="container">
       <h1>Crud app</h1>
-      <UseForm addUser={addUser} />
+      <UseForm addUser={addUser}
+        search={search}
+        setSearch={setSearch}
+      />
       <UseList
-        users={users}
+        users={filtredUsers}
         deleteUser={deleteUser}
         updateUser={updateUser}
       />
