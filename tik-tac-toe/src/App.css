@@ -1,0 +1,109 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #f8fafc, #e2e8f0);
+  font-family: "Montserrat", sans-serif;
+  color: #1e293b;
+}
+
+h1 {
+  margin-bottom: 5px;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  background: linear-gradient(to right, #3b82f6, #4f46e5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.status-display {
+  margin-bottom: 24px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  padding: 12px 24px;
+  background-color: #ffffff;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #f1f5f9;
+}
+
+.winner-announcement {
+  background-color: #10b981;
+  color: white;
+  border-color: #10b981;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+  animation: celebrate 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.restart-btn {
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: white;
+  background-color: #4f46e5;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3);
+}
+
+.restart-btn:hover {
+  background-color: #4338ca;
+  transform: translateY(-1px);
+  box-shadow: 0 12px 20px -3px rgba(79, 70, 229, 0.4);
+}
+
+.restart-btn:active {
+  transform: translateY(1px);
+}
+
+@keyframes celebrate {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.board-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.score-counter {
+  /* position: absolute;
+  right: -10px;
+  bottom: -25px; */
+  background-color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); */
+  display: inline-flex;
+  gap: 10px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 15px;
+}
+
+.score-counter div:nth-child(1) {
+  color: #3b82f6;
+}
+
+.score-counter div:nth-child(2) {
+  color: #ef4444;
+}
+
+.score-counter div:nth-child(3) {
+  color: #64748b;
+}
