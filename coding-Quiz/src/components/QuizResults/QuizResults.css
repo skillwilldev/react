@@ -1,0 +1,74 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.results-modal {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    animation: scaleUp 0.3s ease-out;
+}
+
+.results-stats {
+    margin: 20px 0;
+    text-align: left;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.rank-badge {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.rank-badge.middle {
+    background: #d4edda;
+    color: #155724;
+}
+
+.rank-badge.junior {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.rank-badge.intern {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.restart-btn {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
