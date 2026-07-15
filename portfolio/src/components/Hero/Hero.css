@@ -1,0 +1,114 @@
+.hero {
+  padding: 96px 24px 80px;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.hero__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 56px;
+  align-items: center;
+}
+
+.hero__eyebrow {
+  font-family: var(--font-mono);
+  color: var(--accent-green);
+  font-size: 14px;
+  margin: 0 0 16px;
+}
+
+.hero__title {
+  font-size: clamp(32px, 4.2vw, 48px);
+  line-height: 1.2;
+  font-weight: 800;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
+}
+
+.hero__name {
+  color: var(--accent-blue);
+}
+
+.hero__subtitle {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 480px;
+  margin: 0 0 32px;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero__terminal {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-elevated);
+}
+
+.hero__terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  background-color: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.hero__dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+}
+.hero__dot--red { background-color: #ff5f56; }
+.hero__dot--yellow { background-color: #ffbd2e; }
+.hero__dot--green { background-color: #27c93f; }
+
+.hero__terminal-title {
+  margin-left: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.hero__terminal-body {
+  margin: 0;
+  padding: 20px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  overflow-x: auto;
+}
+
+.tok-kw { color: var(--accent-purple); }
+.tok-var { color: var(--accent-blue); }
+.tok-str { color: var(--accent-green); }
+
+.hero__cursor {
+  color: var(--accent-green);
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 860px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    padding: 64px 16px 56px;
+  }
+}
